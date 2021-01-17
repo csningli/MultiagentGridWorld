@@ -14,6 +14,7 @@ archived/
 doc/
 logs/
 pydist/__pycache__/
+examples/*/*.json
 
 # Vim temporaries
 *.swo

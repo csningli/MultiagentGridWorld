@@ -20,7 +20,5 @@ if __name__ == "__main__" :
     for moves in plan :
         world.update(moves = moves)
         states.append(world.state())
-
-    json.dump(states, open(dirname()))
-    player = Player(world = world, states = states, width = 400, height = 400, grid_size = 50)
-    player.run()
+    json.dump(states, open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "log.json"), 'w'))
+    print("Done.")
