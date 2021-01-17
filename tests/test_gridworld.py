@@ -9,6 +9,7 @@ def test_gridworld() :
     >>> test_gridworld()
     '''
     gridworld = GridWorld(xlim = 3, ylim = 3, agents = [Object(pos = (0, 1)), Object((pos = (1, 0)))], obts = [])
+    print(gridworld.state())
 
 if __name__ == '__main__' :
     result = doctest.testmod()

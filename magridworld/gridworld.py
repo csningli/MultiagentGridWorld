@@ -1,17 +1,36 @@
 
 import sys, random, time, numpy, copy
 
-class Object :
-    def __init__(self, pos) :
+class Object(object) :
+    def __init__(self, id, pos) :
         self.pos = pos
 
-class GridWorld :
+    def state(self) :
+        return (%s, %d, %d) % (type(self).__name__, self.pos[0], self.pos[1])
+
+class Agent(Object) :
+    def __init__(self, id, pos, target) :
+        super(Agent, self).__init__(id = id, pos = pos)
+        self.target = target
+
+class Obstacle(Object) :
+    def __init__(self, id, pos, target) :
+        super(Obstacle, self).__init__(id = id, pos = pos)
+        self.target = target
+
+class GridWorld(object) :
     def __init__(self, xlim, ylim, agents, obts) :
         self.xlim = xlim
         self.ylim = ylim
         self.agents = agents
         self.obts = obts
         self.update_rules = [one_grid_one_obj_rule]
+
+    def state(self) :
+        return {
+            "agents" : [agent.state() for agent in self.agents],
+            "obts" : [obt.state() for obt in self.obts],
+        }
 
     def is_pos_valid(self, pos) :
         return pos[0] >= - self.xlim and pos[0] <= self.xlim and pos[1] >= - self.ylim and pos[1] <= self.ylim

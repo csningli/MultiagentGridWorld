@@ -8,16 +8,21 @@ from pygame.locals import *
 from pygame.color import *
 
 class Player :
-    def __init__(self, screen_width : int, screen_height : int, targets : list, obstacles : list, data : list, width : int, height : int, life : int = 1) :
-        self.targets = targets
-        self.obstacles = obstacles
-        self.data = data
+    def __init__(self, world, states, width : int = 800, height : int = 800, grid_size : int = 10) :
+        self.world = world
+        self.states = states
         self.width = width
         self.height = height
-        self.screen_width = screen_width
-        self.screen_height = screen_height
-        self.life = life
-        self.radius = 10
+        self.grid_size = grid_size
+
+    def draw_world(self, screen) :
+        pass
+
+    def draw_agent(self, screen, id, pos) :
+        pass
+
+    def draw_obt(self, screen, pos) :
+        pass
 
     def draw(self, screen, step, speed) :
         if screen is not None and step >= 0 and step < len(self.data) :

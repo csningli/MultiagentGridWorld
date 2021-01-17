@@ -1,16 +1,33 @@
 #! /bin/bash
 
-dir="./experiments/"$1
-cd $dir
+CONENV="gridworld"
 
-rm *.log
+CONCON=$(which conda)
+CONBIN=${CONCON%/*}
+CONPATH=${CONBIN%/*}
 
-source activate gridworld
+OUT=$(conda --version)
+VER=${OUT#*\ }
+PRI_SEC=${VER%\.*}
+PRI=${PRI_SEC%%\.*}
+SEC=${PRI_SEC##*\.}
 
-config="../../configs/"$2".config"
-
-if [ -f $config ]; then
-  python sim.py -c $config
+if [ $PRI -lt 5 ] && [ $SEC -lt 4 ]
+then
+  source activate $CONENV
 else
-  echo "Cannot find the config: "$config
+  source $CONPATH"/etc/profile.d/conda.sh"
+  conda deactivate
+  conda activate $CONENV
+fi
+
+export PYTHONPATH=$PYTHONPATH:`pwd`
+if [ $# -gt 0 ]
+then
+  python $1.py $2 $3
+else
+  for file in "tests/test_"*".py"
+  do
+    python $file
+  done
 fi
