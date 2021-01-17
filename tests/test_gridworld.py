@@ -30,8 +30,8 @@ def test_gridworld() :
     '''
     world = GridWorld(xlim = 3, ylim = 3,
         agents = [
-            Agent(id = 0, pos = (0, 1), target = (0, 2)),
-            Agent(id = 1, pos = (1, 0), target = (2, 0)),
+            Agent(id = 0, pos = (0, 1)),
+            Agent(id = 1, pos = (1, 0)),
         ],
         obts = [
             Obstacle(id = 0, pos = (-2, 0)),

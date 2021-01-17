@@ -3,15 +3,15 @@ import sys, random, time, numpy, copy
 
 class Object(object) :
     def __init__(self, id, pos) :
+        self.id = id
         self.pos = pos
 
     def state(self) :
         return (type(self).__name__, self.pos[0], self.pos[1])
 
 class Agent(Object) :
-    def __init__(self, id, pos, target) :
+    def __init__(self, id, pos) :
         super(Agent, self).__init__(id = id, pos = pos)
-        self.target = target
 
 class Obstacle(Object) :
     def __init__(self, id, pos) :
