@@ -1,16 +1,18 @@
 [**status**: developing]
 
-# GridWorldOptimization
+# MultiagentGridWorld
 
-# Install
+## Anaconda Environment
 
-## Create Anaconda Environment
+  python = 3.7.4
+  pygame = 1.9.6
 
-  conda create -n gridopt python=3.6
+## Run An Example
 
-## Setup
+  ./run.sh examples/simple/main
+  ./run.sh examples/simple/play
 
-  source activate gridopt
-  pip install .
+Alternatively, you can activate the conda environment and run
 
-# Workflow
+  python examples/simple/main.py
+  python examples/simple/play.py
